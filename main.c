@@ -11,7 +11,7 @@
 #define WINDOW_WIDTH 1000
 #define COLOR_WHITE 0xFFFFFF
 #define COLOR_GRAY  0x151716 
-#define COLOR_ORANGE 0xff00ff
+#define COLOR_MAGENTA 0xff00ff
 
 #define VELOCITY_X 200
 #define VELOCITY_Y 0
