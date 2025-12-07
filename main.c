@@ -60,7 +60,7 @@ int main(void) {
     Uint32 currentTime = SDL_GetTicks();
     double deltaTime = (currentTime - lastTime) / 1000.00;
     lastTime = currentTime;
-    SDL_FillRect(surface,NULL,0x000000);
+    SDL_FillRect(surface,NULL,COLOR_GRAY);
     a.vx += 10;
     a.vy += g * deltaTime;
     a.cx += a.vx * deltaTime;
