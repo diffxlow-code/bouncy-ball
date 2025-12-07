@@ -102,7 +102,7 @@ void drawCircle(Circle *circle, SDL_Surface *surface) {
       if( (dx*dx) + (dy*dy) <= radius*radius) {
         pixel.x =(int) circle->cx + dx;
         pixel.y =(int) circle->cy + dy;
-        SDL_FillRect(surface, &pixel, COLOR_ORANGE);
+        SDL_FillRect(surface, &pixel, COLOR_MAGENTA);
       }
     }
   }
