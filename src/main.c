@@ -91,19 +91,34 @@ int main(void) {
 }
 
 void drawCircle(Circle *circle, SDL_Surface *surface) {
-  SDL_Rect pixel = {
-    .h = 1,
-    .w = 1,
-    .x = 0,
-    .y = 0,
-  };
-  for(int dx = -radius ; dx <= radius ; dx++) {
-    for(int dy = -radius ; dy <= radius ; dy++) {
-      if( (dx*dx) + (dy*dy) <= radius*radius) {
-        pixel.x =(int) circle->cx + dx;
-        pixel.y =(int) circle->cy + dy;
-        SDL_FillRect(surface, &pixel, COLOR_MAGENTA);
-      }
+    int x = radius;
+    int y = 0;
+    int decision = 1 - radius;
+
+    int cx = (int)circle->cx;
+    int cy = (int)circle->cy;
+
+    Uint32 color = SDL_MapRGB(
+        surface->format, 255, 0, 255
+    );
+
+    while (x >= y) {
+        SDL_Rect lines[] = {
+            {cx - x, cy + y, 2 * x + 1, 1},
+            {cx - x, cy - y, 2 * x + 1, 1},
+            {cx - y, cy + x, 2 * y + 1, 1},
+            {cx - y, cy - x, 2 * y + 1, 1}
+        };
+
+        SDL_FillRects(surface, lines, 4, color);
+
+        y++;
+
+        if (decision < 0) {
+            decision += 2 * y + 1;
+        } else {
+            x--;
+            decision += 2 * (y - x) + 1;
+        }
     }
-  }
 }
